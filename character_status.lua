@@ -16,6 +16,7 @@ nameText:setText(inOutOfCharacter.." | "..characterName)
 :setPos(0,5,0)
 end
 
+--Status update
 local statusCount = 0
 
 function pings.icChange()
@@ -76,7 +77,8 @@ local action = characterPage:newAction()
 	:hoverColor(1, 0, 1)
 	:setOnLeftClick(statusUp)
 	:setOnRightClick(statusDown)
-	
+
+--Name Revealed
 function pings.mysteryChange()
 characterName = "???"
 customNameplateSet()
@@ -100,6 +102,23 @@ local action = characterPage:newAction()
 	:setOnUntoggle(pings.mysteryChange)
 
 customNameplateSet()
+
+--Hide Status
+function pings.hideTag()
+models.model.NameplateAnchor:setVisible(false)
+end
+
+function pings.showTag()
+models.model.NameplateAnchor:setVisible(true)
+end
+
+
+local action = characterPage:newAction()
+	:title("Hide Status")
+	:item("minecraft:crimson_fungus")
+	:hoverColor(1, 0, 1)
+	:setOnToggle(pings.hideTag)
+	:setOnUntoggle(pings.showTag)
 
 --Creating Default Set Commands
 function events.chat_send_message(message)
@@ -144,6 +163,8 @@ end
 
 --Automatically creates the action wheel stuff
 local lastPage = ""
+
+
 
 function events.entity_init()
 	quickLoad()
