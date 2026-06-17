@@ -8,7 +8,7 @@ local characterName = "???"
 local defaultName = "Steve"
 local loadedName = ""
 
-function customNameplateSet()
+function pings.customNameplateSet()
 nameText:setText(inOutOfCharacter.." | "..characterName)
 :setScale(0.4)
 :setOutline(true)
@@ -22,19 +22,19 @@ local statusCount = 0
 function pings.icChange()
 host:sendChatCommand("nickname set [IC] "..player:getName().." | "..loadedName)
 inOutOfCharacter = "IC"
-customNameplateSet()
+pings.customNameplateSet()
 end
 
 function pings.oocChange()
 host:sendChatCommand("nickname set [OOC] "..player:getName().." | "..loadedName)
 inOutOfCharacter = "OOC"
-customNameplateSet()
+pings.customNameplateSet()
 end
 
 function pings.afkChange()
 host:sendChatCommand("nickname set [AFK] "..player:getName().." | "..loadedName)
 inOutOfCharacter = "AFK"
-customNameplateSet()
+pings.customNameplateSet()
 end
 
 function statusUp()
@@ -81,7 +81,7 @@ local action = characterPage:newAction()
 --Name Revealed
 function pings.mysteryChange()
 characterName = "???"
-customNameplateSet()
+pings.customNameplateSet()
 end
 
 function pings.revealChange()
@@ -90,7 +90,7 @@ if loadedName ~= "" then
 defaultName = loadedName
 end
 characterName = defaultName
-customNameplateSet()
+pings.customNameplateSet()
 end
 
 
@@ -101,7 +101,7 @@ local action = characterPage:newAction()
 	:setOnToggle(pings.revealChange)
 	:setOnUntoggle(pings.mysteryChange)
 
-customNameplateSet()
+pings.customNameplateSet()
 
 --Hide Status
 function pings.hideTag()
